@@ -12,6 +12,7 @@ class Global {
     private init() {}
     // Network
     let apiKey = "c9856d0cb57c3f14bf75bdc6c063b8f3"
+    let trendingListImageSize = "w500/"
 }
 
 struct Constants {

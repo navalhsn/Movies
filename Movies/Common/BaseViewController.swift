@@ -31,7 +31,7 @@ class BaseViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setupNavigation(animated)
+       // setupNavigation(animated)
     }
     
     //#MARK: Navigation controller
@@ -62,6 +62,7 @@ class BaseViewController: UIViewController {
         
         // self.view = backgroundView
         self.view.addSubview(activityIndicator)
+        stopLoader()
     }
     
     func startLoader() {

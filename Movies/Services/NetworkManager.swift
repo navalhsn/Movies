@@ -10,7 +10,7 @@ import Foundation
 struct ApiEndpoints {
     static let shared = ApiEndpoints()
     let trendingMoviesListUrl = "https://api.themoviedb.org/3/discover/movie"
-    let imageBaseUrl = "https://image.tmdb.org/t/p/w500/"
+    let imageBaseUrl = "https://image.tmdb.org/t/p/"
     let movieDetailBaseUrl = "https://developers.themoviedb.org/3/movies/"
 }
 
