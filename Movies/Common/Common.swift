@@ -5,7 +5,7 @@
 //  Created by Naval Hasan on 07/04/23.
 //
 
-import Foundation
+import UIKit
 
 class Global {
     static let shared = Global()
@@ -16,21 +16,30 @@ class Global {
 }
 
 struct Constants {
-    // Home
-    static let movies = "Movies"
-    static let paginationEndText = "end"
+    static let shared = Constants()
+    private init() {}
+    // Detail
+    let rating = "Rating:"
+    let based_on = "Based on"
+    let votes = "Votes"
 }
 
 struct ColorValues {
     // General
-    static let activityIndicatorColor = "#9E3786"
-    // Home
-    static let homeCategoryCollectionCellSelectionColor = "#53338A"
-    static let homeCategoryCollectionArrowColor = "#F2F3F1"
+    static let activityIndicatorColor = "#ffe300"
+    static let navigationBarBackgroundColor = UIColor.systemBackground
 }
 
-struct cellIdentifiers {
-    // Home
-    static let homeCategoryCollectionCellIdentifier = "HomeCategoriesCollectionViewCell"
-    static let homebrandsCollectionCellIdentifier = "HomeBrandsCollectionViewCell"
+struct ViewControllerIdentifiers {
+    static let shared = ViewControllerIdentifiers()
+    private init() {}
+    // Detail
+    let movieDetailViewController = "MovieDetailViewController"
+}
+
+struct CellIdentifiers {
+    static let shared = CellIdentifiers()
+    private init() {}
+    // Listing
+    let listMoviesTableViewCell = "ListMoviesTableViewCell"
 }

@@ -16,7 +16,7 @@ class BaseViewController: UIViewController {
     var setCustomHomeNavigation: UIView {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 80, height: 35))
         let logoImage = UIImageView.init(frame: view.frame)
-        logoImage.image  = UIImage(named: "app_logo_navigation")
+        logoImage.image = #imageLiteral(resourceName: "app_logo_navigation")
         logoImage.contentMode = .scaleAspectFit
         view.addSubview(logoImage);
         logoImage.center.x = view.frame.width/2;
@@ -30,18 +30,38 @@ class BaseViewController: UIViewController {
         setupActivityIndicator()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-       // setupNavigation(animated)
-    }
-    
     //#MARK: Navigation controller
-    func setupNavigation(_ animated: Bool) {
+    func setupHomeNavigation(_ animated: Bool) {
         self.navigationController?.navigationBar.barTintColor = UIColor.white
         navigationController?.setNavigationBarHidden(false, animated: animated)
         self.navigationItem.titleView = setCustomHomeNavigation
-        self.navigationController?.navigationBar.barTintColor = UIColor.white
+        self.navigationController?.navigationBar.barTintColor = ColorValues.navigationBarBackgroundColor
     }
     
+    func setupDetailNavigationBar() {
+        navigationItem.hidesBackButton = true
+        let backButton = UIButton()
+        backButton.frame = CGRect(x:0, y:0, width:40, height:40)
+        backButton.backgroundColor = UIColor.clear
+        let backImage = #imageLiteral(resourceName: "back_button")
+        backButton.setImage(backImage, for: .normal)
+        backButton.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        backButton.addTarget(self, action: #selector(back(sender:)), for: .touchUpInside)
+        let leftBarButton = UIBarButtonItem(customView: backButton)
+        self.navigationItem.leftBarButtonItem = leftBarButton
+        
+        let navigationBar = navigationController?.navigationBar
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.shadowColor = ColorValues.navigationBarBackgroundColor
+        navigationBarAppearance.backgroundColor = ColorValues.navigationBarBackgroundColor
+        navigationBar?.scrollEdgeAppearance = navigationBarAppearance
+    }
+    
+    @objc func back(sender: UIBarButtonItem) {
+        self.navigationController?.popViewController(animated:true)
+    }
+    
+    //#MARK: Activity Indicator
     func setupActivityIndicator() {
         // configure activity indicator using NVActivityIndicatorView
         let xAxis = (self.view.frame.width / 2) - 27.5
@@ -59,8 +79,6 @@ class BaseViewController: UIViewController {
         bgView.backgroundColor = .black
         bgView.alpha = 0.4
         self.view.addSubview(bgView)
-        
-        // self.view = backgroundView
         self.view.addSubview(activityIndicator)
         stopLoader()
     }

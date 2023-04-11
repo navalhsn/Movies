@@ -20,15 +20,18 @@ class MovieListViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         callTrendingMoviesApi()
+        setupHomeNavigation(true)
     }
     
     // #MARK: Other functions
     func callTrendingMoviesApi() {
+        startLoader()
         movieListViewModel.getTrendingMovies({ response in
             self.trendingMoviesModel = response
             DispatchQueue.main.async {
                 self.movieListTableView.reloadData()
             }
         })
+        stopLoader()
     }
 }

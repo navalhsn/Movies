@@ -57,5 +57,4 @@ struct Results : Codable {
         vote_average = try values.decodeIfPresent(Double.self, forKey: .vote_average)
         vote_count = try values.decodeIfPresent(Int.self, forKey: .vote_count)
     }
-
 }
